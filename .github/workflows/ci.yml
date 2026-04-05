@@ -20,6 +20,9 @@ jobs:
       - name: Instalar dependencias
         run: |
           pip install -r requirements.txt
+          
+      - name: Configurar PYTHONPATH
+        run: echo "PYTHONPATH=." >> $GITHUB_ENV
 
       - name: Ejecutar pruebas con cobertura
         run: |
@@ -30,6 +33,3 @@ jobs:
         with:
           args: >
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            
-      - name: Configurar PYTHONPATH
-        run: echo "PYTHONPATH=." >> $GITHUB_ENV
